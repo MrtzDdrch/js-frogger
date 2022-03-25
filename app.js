@@ -6,6 +6,8 @@ let currentIndex = 76;
 const width = 9;
 const logsLeft = document.querySelectorAll('.log-left');
 const logsRight = document.querySelectorAll('.log-right');
+const carsRight = document.querySelectorAll('.car-right');
+const carsLeft = document.querySelectorAll('.car-left');
 
 
 function moveFrog(e){
@@ -33,10 +35,13 @@ function moveFrog(e){
 
 document.addEventListener('keyup', moveFrog);
 
-function autoMoveLogs(){
+function autoMoveElements(){
     logsLeft.forEach(logLeft => moveLogLeft(logLeft));
     logsRight.forEach(logRight => moveLogRight(logRight));
+    carsRight.forEach(carRight => moveCarRight(carRight));
+    carsLeft.forEach(carLeft => moveCarLeft(carLeft));
 }
+
 
 
 function moveLogLeft(logLeft){
@@ -89,4 +94,40 @@ function moveLogRight(logRight){
         }
  }
 
-setInterval(autoMoveLogs, 1000);
+
+
+function moveCarRight(carRight){
+    switch(true){
+        case carRight.classList.contains('c1'):
+            carRight.classList.remove('c1');
+            carRight.classList.add('c3');
+            break;
+        case carRight.classList.contains('c2'):
+            carRight.classList.remove('c2');
+            carRight.classList.add('c1');
+            break;
+        case carRight.classList.contains('c3'):
+            carRight.classList.remove('c3');
+            carRight.classList.add('c2');
+            break;
+    }
+}
+
+function moveCarLeft(carLeft){
+    switch(true){
+        case carLeft.classList.contains('c1'):
+            carLeft.classList.remove('c1');
+            carLeft.classList.add('c2');
+            break;
+        case carLeft.classList.contains('c2'):
+            carLeft.classList.remove('c2');
+            carLeft.classList.add('c3');
+            break;
+        case carLeft.classList.contains('c3'):
+            carLeft.classList.remove('c3');
+            carLeft.classList.add('c1');
+            break;
+    }
+}
+
+setInterval(autoMoveElements, 1000);

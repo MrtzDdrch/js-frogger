@@ -31,6 +31,7 @@ function moveFrog(e){
 
     squares[currentIndex].classList.add('frog');
     lose();
+    win();
 
 
 }
@@ -142,6 +143,14 @@ function lose(){
         resultDisplay.textContent = 'You lose!';
         clearInterval(timerId);
         squares[currentIndex].classList.remove('frog');
+        document.removeEventListener('keyup', moveFrog);
+    }
+}
+
+function win(){
+    if(squares[currentIndex].classList.contains('ending-block')){
+        resultDisplay.textContent = 'You win!';
+        clearInterval(timerId);
         document.removeEventListener('keyup', moveFrog);
     }
 }

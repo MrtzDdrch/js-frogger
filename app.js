@@ -134,7 +134,11 @@ function moveCarLeft(carLeft){
 }
 
 function lose(){
-    if(squares[currentIndex].classList.contains('c1')){
+    if(
+        squares[currentIndex].classList.contains('c1') ||
+        squares[currentIndex].classList.contains('l4') ||
+        squares[currentIndex].classList.contains('l5')
+    ){
         resultDisplay.textContent = 'You lose!';
         clearInterval(timerId);
         squares[currentIndex].classList.remove('frog');
